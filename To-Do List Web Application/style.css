@@ -1,0 +1,314 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #E6EAF0; /* Light grayish-blue container background */
+    margin: 0;
+    padding: 0;
+    color: #fff; /* White text color */
+}
+
+/* Outer Container Styles */
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #141E46; /* Deep blue background */
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Inner Container Styles */
+.inner-container {
+    padding: 10px;
+    max-height: 525px; /* Set a maximum height for the inner container */
+    overflow-y: auto; /* Add vertical scroll when content overflows */
+    scroll-behavior: smooth;
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ff9900;
+    transition: color 0.3s ease;
+}
+
+/* Task Input Styles */
+.add-task {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width:350px;
+    margin: 0 10px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #394867; 
+    color: #fff; 
+    font-size: 16px;
+}
+
+/* Button Styles */
+button {
+    padding: 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 1rem;
+    color: #fff; /* White button text color */
+}
+
+select {
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #005050; /* Darker blue background */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    width: 80px;
+}
+
+select:hover {
+    background-color: #004040; /* Slightly darker blue on hover */
+}
+
+
+
+i {
+    font-size: 1.2rem;
+}
+#addButton {
+    background-color: #FF5733; /* A shade of orange */
+    width: 60px;
+}
+
+#addButton:hover {
+    background-color: #FF4500; /* Slightly darker orange on hover */
+}
+
+
+/* Add Priority Icon Styling */
+.priority {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* Priority Level Colors */
+.priority.high { color: red !important; }
+.priority.medium { color: yellow !important; }
+.priority.low { color: green !important; }
+
+
+/* Priority Level Colors */
+.high { color: red; }
+.medium { color: yellow; }
+.low { color: green; }
+
+
+
+.edit-priority-select {
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Filtering and Sorting Buttons */
+.filter-sort-buttons {
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    margin-bottom: 20px; /* Add spacing below buttons */
+}
+
+.filter-sort-buttons button {
+    padding: 12px; /* Adjust padding for buttons */
+    background-color: #038d8d; /* Background color for buttons */
+    color: #fff; /* Text color for buttons */
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-sort-buttons button:hover {
+    background-color: #005050; /* Darker blue on hover */
+}
+
+.task-container {
+    display: flex;
+    justify-content: space-between; /* Ensure task and buttons are spaced evenly */
+    align-items: center; /* Vertically center items within the task container */
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc; 
+}
+
+/* Task Info Styles */
+.task-info {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%; /* Adjust as needed */
+}
+
+/* Task Actions Styles */
+.task-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push buttons to the right */
+    min-width: 30%;
+}
+
+
+/* Task List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+/* Apply flexbox to each task item */
+li {
+    display: flex;
+    align-items: center;
+    font-size: 1;
+}
+
+/* Task text to the left with ellipsis */
+li .task-text {
+    flex-grow: 1;
+    font-size: 18px;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Apply ellipsis to the task text */
+    max-width: calc(100% - 80px); /* Adjust the max-width as needed */
+}
+
+/* Buttons to the right */
+li .button-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Ensure the last button (delete) is pushed to the right */
+li .button-container button {
+    font-size: 12px;
+    margin-left: 5px; /* Add some spacing between the buttons */
+}
+
+/* Add spacing between the task text and buttons */
+li .button-container button:first-child {
+    margin-right: 10px;
+}
+
+li.new-task {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.3s ease, height 0.3s ease;
+} 
+.task-text {
+    position: relative; /* Add this to make the tooltip position relative to the task text */
+    width: 380px; /* Set a fixed width for all task text elements */
+    font-size: 1.3rem;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Apply ellipsis to the task text */
+}
+
+.task-text::before {
+    content: attr(title);
+    position: absolute;
+    background-color: #394867; /* Deep blue tooltip background */
+    color: #fff; /* White text color for tooltip */
+    padding: 8px; /* Add padding to make the tooltip larger */
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    top: 100%; /* Position the tooltip below the task text */
+    left: 50%; /* Center the tooltip horizontally */
+    transform: translateX(-50%); /* Center the tooltip horizontally */
+}
+
+.task-text:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Add this CSS class to hide tasks */
+.hidden-task {
+    display: none;
+}
+
+
+.delete-button {
+    background-color: #e74c3c; /* Vibrant red button background */
+}
+
+.delete-button:hover {
+    background-color: #c62e1d; /* Darker red on hover */
+}
+
+.edit-button {
+    background-color: #3498db; /* Vibrant blue button background */
+}
+
+.edit-button:hover {
+    background-color: #1f78b4; /* Darker blue on hover */
+}
+
+.complete-button {
+    background-color: #2ecc71; /* Vibrant green button background */
+}
+
+.complete-button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
+.completed {
+    text-decoration: line-through;
+    transition: text-decoration 0.3s ease;
+}
+
+/* Add this CSS for small screens */
+
+
+@media (max-width: 400px) {
+    input[type="text"] {
+        width: 160px;  
+    }
+    .task-text {
+       width:160px;
+    }
+    .filter-sort-buttons button {
+        padding:5px;
+    }
+}
+
+@media (min-width: 410px) and (max-width: 480px) {
+    .task-text {
+        width:220px;
+     }
+}
+
+@media (min-width: 481px) and (max-width: 550px) {
+    .task-text {
+        width:280px;
+     }
+}
+
